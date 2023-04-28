@@ -1,24 +1,27 @@
 package com.longhrk.app.ui.screen
 
+import android.content.Context
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.longhrk.app.R
 import com.longhrk.app.ui.components.HeaderApp
-import com.longhrk.app.ui.extensions.gridItems
-import com.longhrk.app.ui.model.Lesson
-import com.longhrk.app.ui.model.LessonUnit
+import com.longhrk.app.ui.fakeDatas.FakeListData.fakeDataList
 import com.longhrk.app.ui.theme.FontStyle12
 import com.longhrk.app.ui.theme.FontStyle16
 import com.longhrk.app.ui.theme.background
@@ -36,103 +39,7 @@ fun HomeScreen() {
 
     val sizeItem = (widthScreen / 3)
 
-    val listUnit = ArrayList<LessonUnit>().apply {
-        add(
-            LessonUnit(
-                id = 1,
-                title = "I feel good",
-                lessons = ArrayList<Lesson>().apply {
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-                }
-            )
-        )
-
-        add(
-            LessonUnit(
-                id = 1,
-                title = "I feel good",
-                lessons = ArrayList<Lesson>().apply {
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-                }
-            )
-        )
-
-        add(
-            LessonUnit(
-                id = 1,
-                title = "I feel good",
-                lessons = ArrayList<Lesson>().apply {
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-
-                    Lesson(
-                        id = 11,
-                        image = R.drawable.logo_app,
-                        status = true
-                    )
-                }
-            )
-        )
-    }
+    val listUnit = fakeDataList
 
     Column(
         modifier = Modifier
@@ -148,21 +55,25 @@ fun HomeScreen() {
                 .background(element.copy(0.1f))
         )
 
-        LazyColumn(
-            modifier = Modifier.weight(1f)
-        ) {
-            listUnit.forEach {
-                gridItems(
-                    count = it.lessons.size,
-                    nColumns = 2,
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    ItemLesson(
-                        modifier = Modifier.size(sizeItem),
-                    )
-                }
-            }
-        }
+        ItemLesson(
+            modifier = Modifier.size(getPxToDp(R.dimen.px10, context)),
+        )
+
+//        LazyColumn(
+//            modifier = Modifier.weight(1f),
+//        ) {
+//            listUnit.forEach {
+//                gridItems(
+//                    count = it.lessonParts.size,
+//                    nColumns = 3,
+//                    horizontalArrangement = Arrangement.SpaceAround
+//                ) {
+//                    ItemLesson(
+//                        modifier = Modifier.size(context.resources.getDimension(R.dimen.px10).dp),
+//                    )
+//                }
+//            }
+//        }
     }
 }
 
@@ -199,6 +110,12 @@ fun UnitTitle(
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun PreviewComposeItem() {
+    ItemLesson(modifier = Modifier.size(100.dp))
+}
+
 @Composable
 fun ItemLesson(
     modifier: Modifier,
@@ -207,8 +124,17 @@ fun ItemLesson(
     Box(
         modifier = modifier
             .fillMaxSize()
+            .clip(shape = RoundedCornerShape(50))
             .background(Color.Red)
     ) {
-
+        Canvas(modifier = Modifier.fillMaxSize()) {
+//            drawCircle(
+//
+//            )
+        }
     }
+}
+
+fun getPxToDp(id: Int, context: Context): Dp {
+    return context.resources.getDimension(id).dp
 }

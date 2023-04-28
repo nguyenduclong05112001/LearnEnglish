@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/layoutFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/px8"
+        android:background="@drawable/selector_boder_radius_l"
+        android:minHeight="@dimen/px26">
+
+        <com.well.designsystem.view.CustomTextView
+            android:id="@+id/tvFilter"
+            style="@style/T12H18R"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:paddingHorizontal="@dimen/px12"
+            android:paddingVertical="@dimen/px4"
+            android:textColor="@drawable/selector_text_color"
+            tools:text="filter name" />
+    </RelativeLayout>
+</layout>

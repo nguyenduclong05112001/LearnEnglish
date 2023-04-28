@@ -2,6 +2,13 @@ package com.longhrk.app.ui.model
 
 data class Lesson(
     val id: Int,
-    val image: Int,
-    val status: Boolean
+    val type: TypeLesson,
+    val isCompleted: Boolean,
 )
+
+enum class TypeLesson {
+    READING,
+    WRITING,
+    SPEAKING,
+    LISTENING
+}

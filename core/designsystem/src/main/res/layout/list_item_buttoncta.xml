@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivStartIcon"
+            style="@style/ListItemIcon.Start.Medium"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            tools:src="@drawable/ic_down_24" />
+
+        <com.well.designsystem.view.CustomTextView
+            android:id="@+id/tvTitle"
+            style="@style/ListItem.Title"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/viewButton"
+            android:layout_toEndOf="@+id/ivStartIcon"
+            tools:text="Đây là title dài dằng dặc" />
+
+        <FrameLayout
+            android:id="@+id/viewButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/px8">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivEndIcon"
+                style="@style/ListItemIcon.End.Medium"
+                android:visibility="gone"
+                tools:src="@drawable/ic_google" />
+
+            <com.well.designsystem.view.button.WellButton
+                android:id="@+id/btnSecondary"
+                style="@style/ButtonSecondary.SizeS"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                tools:text="Secondary" />
+
+            <com.well.designsystem.view.button.WellButton
+                android:id="@+id/btnPrimary"
+                style="@style/ButtonPrimary.SizeS"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                tools:text="Primary"
+                tools:visibility="visible"/>
+
+            <com.well.designsystem.view.button.WellButton
+                android:id="@+id/btnPlain"
+                style="@style/ButtonPlain.SizeS.Style2"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                tools:text="Primary" />
+        </FrameLayout>
+    </RelativeLayout>
+</layout>

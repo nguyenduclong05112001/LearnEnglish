@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/px44"
+        android:paddingVertical="@dimen/px12"
+        android:paddingStart="@dimen/px16">
+
+        <com.well.designsystem.view.CustomTextView
+            android:id="@+id/tvLabelTitle"
+            style="@style/T14H20B"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/px16"
+            android:textColor="@color/ink_5"
+            app:layout_constraintBottom_toTopOf="@id/tvLabelDes"
+            app:layout_constraintEnd_toStartOf="@+id/tvLabelAction"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvLabelAction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Total Exercise" />
+
+        <com.well.designsystem.view.CustomTextView
+            android:id="@+id/tvLabelAction"
+            style="@style/T12H18M"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingHorizontal="@dimen/px6"
+            android:paddingVertical="@dimen/px4"
+            android:layout_marginEnd="@dimen/px10"
+            android:textColor="@color/pri_4"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLabelTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvLabelTitle"
+            tools:text="Total Exercise" />
+
+        <com.well.designsystem.view.CustomTextView
+            android:id="@+id/tvLabelDes"
+            style="@style/T12H18R"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/px2"
+            android:layout_marginEnd="@dimen/px16"
+            android:textColor="@color/ink_3"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tvLabelAction"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvLabelAction"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvLabelTitle"
+            tools:text="Total Exercise" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

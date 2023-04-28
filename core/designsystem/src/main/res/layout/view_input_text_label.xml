@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.well.designsystem.view.forminput.WellTextFieldLabel
+        android:id="@+id/tvTitle"
+        style="@style/TextFieldLabelNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:visibility="gone"
+        tools:text="Label"/>
+
+    <com.well.designsystem.view.forminput.WellTextField
+        android:id="@+id/tvInputLabel"
+        style="@style/TextFieldValueBoxNormal"
+        android:layout_width="match_parent"
+        android:layout_below="@id/tvTitle"
+        android:inputType="text|textCapWords"
+        android:layout_marginTop="@dimen/px4"/>
+
+</RelativeLayout>

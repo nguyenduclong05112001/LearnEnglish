@@ -4,5 +4,5 @@ data class LessonUnit(
     val id: Int,
     val unitNumber: Int = 1,
     val title: String,
-    val lessons: List<Lesson>
+    val lessonParts: List<LessonPart>
 )

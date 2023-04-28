@@ -1,10 +1,15 @@
 package com.longhrk.app.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import javax.annotation.meta.When
 
 private val fontFamily = FontFamily.Default
 

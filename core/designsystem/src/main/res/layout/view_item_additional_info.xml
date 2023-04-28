@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStartIcon"
+        style="@style/ListItemIcon.Start.Medium"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_google"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <com.well.designsystem.view.CustomTextView
+        android:id="@+id/tvFirstLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/T12H18R"
+        android:textColor="@color/ink_5"
+        android:layout_toEndOf="@+id/ivStartIcon"
+        tools:text="Title" />
+
+    <com.well.designsystem.view.CustomTextView
+        android:id="@+id/tvSecondsLine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/T16H24B"
+        android:textColor="@color/ink_5"
+        android:layout_below="@+id/tvFirstLine"
+        android:layout_toEndOf="@+id/ivStartIcon"
+        android:layout_marginTop="@dimen/px2"
+        tools:text="Description"
+        tools:visibility="visible" />
+</RelativeLayout>

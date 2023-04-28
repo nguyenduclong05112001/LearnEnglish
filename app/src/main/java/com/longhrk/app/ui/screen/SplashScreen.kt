@@ -13,7 +13,7 @@ fun SplashScreen(onNextScreen: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(color = Color.Blue)
+            .background(color = Color.White)
             .clickable { onNextScreen() }
     ) {
 

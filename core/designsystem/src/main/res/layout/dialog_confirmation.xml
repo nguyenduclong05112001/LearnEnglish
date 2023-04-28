@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/px8"
+            android:background="@drawable/shape_dialog_background"
+            android:paddingHorizontal="@dimen/px20"
+            android:paddingTop="@dimen/px20"
+            android:paddingBottom="@dimen/px16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.well.designsystem.view.CustomTextView
+                android:id="@+id/tvTitle"
+                style="@style/T16H24M"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textColor="@color/ink_5"
+                android:paddingBottom="@dimen/px12"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Title"
+                tools:visibility="visible"/>
+
+            <com.well.designsystem.view.CustomTextView
+                android:id="@+id/tv_des"
+                style="@style/T14H20R"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/ink_4"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                tools:text="Description" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/tv_des"
+                android:layout_marginTop="@dimen/px30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.well.designsystem.view.button.WellButton
+                    android:id="@+id/tv_cancel"
+                    style="@style/ButtonPlain.SizeM.Style1"
+                    android:layout_width="wrap_content"
+                    android:layout_marginEnd="@dimen/px8"
+                    android:layout_toLeftOf="@id/tv_confirm"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_confirm"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_confirm"
+                    tools:text="Cancel" />
+
+                <com.well.designsystem.view.button.WellButton
+                    android:id="@+id/tv_confirm"
+                    style="@style/ButtonPlain.SizeM.Style3"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:maxWidth="@dimen/px160"
+                    tools:text="OK " />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
