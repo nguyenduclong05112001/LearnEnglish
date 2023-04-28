@@ -5,10 +5,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.progressSemantics
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -54,7 +56,7 @@ fun HomeScreen() {
                 .background(element.copy(0.1f))
         )
 
-        ItemLesson(modifier = Modifier.size(100.dp))
+        ItemLesson(modifier = Modifier.size((widthScreen / 3)))
     }
 }
 
@@ -104,11 +106,12 @@ fun ItemLesson(
 
     var progress: Float by remember { mutableStateOf(0f) }
 
-    val strokeWidth = (widthComponent * .1f)
+    val trackWidth = (widthComponent * .05f)
 
     Box(
         modifier = modifier
             .fillMaxSize()
+            .clip(shape = RoundedCornerShape(50))
             .onGloballyPositioned {
                 widthComponent = with(localDensity) { it.size.width.toDp() }
             }
@@ -120,18 +123,24 @@ fun ItemLesson(
                 }
             }
     ) {
-        val indicatorSize = 144.dp
-        val trackWidth: Dp = (indicatorSize * .1f)
-        val commonModifier = Modifier.size(indicatorSize)
-
         GradientProgressIndicator(
+            modifier = Modifier.fillMaxSize(),
             progress = progress,
-            modifier = commonModifier,
             strokeWidth = trackWidth,
             gradientStart = Color.Yellow,
             gradientEnd = Color.Yellow,
             trackColor = Color.Gray,
         )
+
+        Box(
+            modifier = Modifier
+                .size((widthComponent * .8f))
+                .clip(shape = RoundedCornerShape(50))
+                .background(element)
+                .align(Alignment.Center)
+        ) {
+
+        }
     }
 }
 
