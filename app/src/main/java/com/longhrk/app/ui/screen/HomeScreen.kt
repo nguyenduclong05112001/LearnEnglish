@@ -1,26 +1,27 @@
 package com.longhrk.app.ui.screen
 
-import android.content.Context
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.progressSemantics
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import com.longhrk.app.R
 import com.longhrk.app.ui.components.HeaderApp
+import com.longhrk.app.ui.extensions.drawCircularIndicator
+import com.longhrk.app.ui.extensions.drawDeterminateCircularIndicator
 import com.longhrk.app.ui.fakeDatas.FakeListData.fakeDataList
 import com.longhrk.app.ui.theme.FontStyle12
 import com.longhrk.app.ui.theme.FontStyle16
@@ -36,8 +37,6 @@ fun HomeScreen() {
     var widthScreen by remember {
         mutableStateOf(0.dp)
     }
-
-    val sizeItem = (widthScreen / 3)
 
     val listUnit = fakeDataList
 
@@ -55,25 +54,7 @@ fun HomeScreen() {
                 .background(element.copy(0.1f))
         )
 
-        ItemLesson(
-            modifier = Modifier.size(getPxToDp(R.dimen.px10, context)),
-        )
-
-//        LazyColumn(
-//            modifier = Modifier.weight(1f),
-//        ) {
-//            listUnit.forEach {
-//                gridItems(
-//                    count = it.lessonParts.size,
-//                    nColumns = 3,
-//                    horizontalArrangement = Arrangement.SpaceAround
-//                ) {
-//                    ItemLesson(
-//                        modifier = Modifier.size(context.resources.getDimension(R.dimen.px10).dp),
-//                    )
-//                }
-//            }
-//        }
+        ItemLesson(modifier = Modifier.size(100.dp))
     }
 }
 
@@ -110,31 +91,75 @@ fun UnitTitle(
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PreviewComposeItem() {
-    ItemLesson(modifier = Modifier.size(100.dp))
-}
-
 @Composable
 fun ItemLesson(
     modifier: Modifier,
 //    lesson: Lesson,
 ) {
+    val localDensity = LocalDensity.current
+
+    var widthComponent by remember {
+        mutableStateOf(0.dp)
+    }
+
+    var progress: Float by remember { mutableStateOf(0f) }
+
+    val strokeWidth = (widthComponent * .1f)
+
     Box(
         modifier = modifier
             .fillMaxSize()
-            .clip(shape = RoundedCornerShape(50))
-            .background(Color.Red)
+            .onGloballyPositioned {
+                widthComponent = with(localDensity) { it.size.width.toDp() }
+            }
+            .clickable {
+                if (progress >= 1f) {
+                    progress = 0f
+                } else {
+                    progress += 0.1f
+                }
+            }
     ) {
-        Canvas(modifier = Modifier.fillMaxSize()) {
-//            drawCircle(
-//
-//            )
-        }
+        val indicatorSize = 144.dp
+        val trackWidth: Dp = (indicatorSize * .1f)
+        val commonModifier = Modifier.size(indicatorSize)
+
+        GradientProgressIndicator(
+            progress = progress,
+            modifier = commonModifier,
+            strokeWidth = trackWidth,
+            gradientStart = Color.Yellow,
+            gradientEnd = Color.Yellow,
+            trackColor = Color.Gray,
+        )
     }
 }
 
-fun getPxToDp(id: Int, context: Context): Dp {
-    return context.resources.getDimension(id).dp
+@Composable
+fun GradientProgressIndicator(
+    progress: Float,
+    modifier: Modifier = Modifier,
+    gradientStart: Color,
+    gradientEnd: Color,
+    trackColor: Color,
+    strokeWidth: Dp
+) {
+    val stroke = with(LocalDensity.current) {
+        Stroke(width = strokeWidth.toPx(), cap = StrokeCap.Butt)
+    }
+    Canvas(
+        modifier
+            .progressSemantics(progress)
+    ) {
+        val startAngle = 270f
+        val sweep = progress * 360f
+        drawDeterminateCircularIndicator(startAngle, 360f, trackColor, stroke)
+        drawCircularIndicator(
+            startAngle = startAngle,
+            sweep = sweep,
+            gradientStart = gradientStart,
+            gradientEnd = gradientEnd,
+            stroke = stroke
+        )
+    }
 }
