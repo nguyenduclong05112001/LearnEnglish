@@ -29,29 +29,22 @@ fun HeaderApp(
     modifier: Modifier,
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+        modifier = modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
             modifier = Modifier.padding(vertical = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            AndroidView(
-                modifier = Modifier
-                    .height(48.dp)
-                    .padding(horizontal = 10.dp),
+            AndroidView(modifier = Modifier
+                .height(48.dp)
+                .padding(horizontal = 10.dp),
                 factory = { context ->
                     ImageView(context).apply {
-                        Glide.with(context)
-                            .load(R.drawable.logo_app)
-                            .into(this)
+                        Glide.with(context).load(R.drawable.logo_app).into(this)
                     }
-                }
-            )
+                })
             Column(
-                modifier = Modifier.padding(0.dp),
-                horizontalAlignment = Alignment.Start
+                modifier = Modifier.padding(0.dp), horizontalAlignment = Alignment.Start
             ) {
                 Text(
                     text = stringResource(id = R.string.connect4),
@@ -89,8 +82,7 @@ fun HeaderApp(
         }
 
         Icon(
-            modifier = Modifier
-                .padding(horizontal = 10.dp),
+            modifier = Modifier.padding(horizontal = 10.dp),
             painter = painterResource(id = R.drawable.ic_more_vert),
             tint = element,
             contentDescription = null
@@ -101,10 +93,7 @@ fun HeaderApp(
 
 @Composable
 fun ItemAchieve(
-    modifier: Modifier,
-    icon: ImageVector,
-    number: String,
-    color: Color
+    modifier: Modifier, icon: ImageVector, number: String, color: Color
 ) {
     Row(
         modifier = modifier.fillMaxWidth(),

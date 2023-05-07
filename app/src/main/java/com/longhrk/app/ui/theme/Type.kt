@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import javax.annotation.meta.When
 
+val fontApp = FontFamily.Default
 private val fontFamily = FontFamily.Default
 
 val FontStyle8 = TextStyle(
